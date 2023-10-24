@@ -1,0 +1,81 @@
+/* Form container styles */
+.signup-container {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  text-align: center;
+}
+
+/* Form header styles */
+.form-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Form input styles */
+.form-group {
+  margin: 10px 0;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+/* Submit button styles */
+.form-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.form-button:hover {
+  background-color: #0056b3;
+}
+
+/* Error message styles */
+.error-message {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Sign-up link styles */
+.sign-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.sign-link a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.sign-link a:hover {
+  text-decoration: underline;
+}
+
+/* Overall container styles (centering the form) */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
