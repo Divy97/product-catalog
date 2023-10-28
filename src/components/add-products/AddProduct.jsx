@@ -16,17 +16,34 @@ function AddProduct() {
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type } = e.target;
+    // Check if the input field is for a file (image)
+    const updatedValue = type === "file" ? e.target.files[0] : value;
     setProductData({
       ...productData,
-      [name]: value,
+      [name]: updatedValue,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your logic to handle the submitted product data here
-    console.log("Product data submitted:", productData);
+    const formData = new FormData();
+    for (const key in productData) {
+      formData.append(key, productData[key]);
+    }
+
+    // Send a POST request to the backend to handle the form data, including the image
+    fetch("http://localhost:8080/addProduct", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.message);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
@@ -57,7 +74,7 @@ function AddProduct() {
           <input
             type="file"
             name="image"
-            value={productData.image}
+            // value={productData.image}
             onChange={handleChange}
           />
         </div>

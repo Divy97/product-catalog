@@ -51,6 +51,27 @@ function SignUp() {
     } else {
       setErrors(newErrors);
     }
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      name: formData.name,
+      email: formData.email,
+      password: formData.password,
+    });
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:8080/signup", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
   };
 
   const { name, email, password, confirmPassword } = formData;

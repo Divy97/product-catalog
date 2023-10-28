@@ -21,13 +21,25 @@ function SignIn() {
     e.preventDefault();
     const { email, password } = formData;
 
-    // Basic authentication logic
-    if (email === "example@example.com" && password === "password") {
-      // Successful authentication, you can redirect or set a user session here
-      alert("Sign-in successful");
-    } else {
-      setError("Invalid email or password");
-    }
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      email: email,
+      password: password,
+    });
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:8080/signin", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
   };
 
   const { email, password } = formData;
